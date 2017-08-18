@@ -36,7 +36,6 @@ namespace HairSalon.Tests
 
       int expected = 1;
       int actual = Client.GetAllClients().Count;
-      Console.WriteLine(actual);
 
       Assert.AreEqual(expected, actual);
     }
@@ -64,6 +63,22 @@ namespace HairSalon.Tests
       List<Client> actual = Client.GetStylistClients(searchStylist);
 
       CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void DeleteAll_DeleteAllClients_Void()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+
+      Client.DeleteAll();
+
+      int expected = 0;
+      int actual = Client.GetAllClients().Count;
+      Console.WriteLine(actual);
+
+
+      Assert.AreEqual(expected, actual);
     }
   }
 }
