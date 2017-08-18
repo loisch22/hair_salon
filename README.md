@@ -22,12 +22,13 @@ _This application will allow hair salon employees to view, add, and delete clien
 | :---         |     :---:      |          ---: |
 | 1. Owner can add a new stylists when hired | > Start    | Add stylist Form    |
 | 2. Owner or stylist can view a list of all stylists, newly added stylist is shown on the list | Add stylist Meg <br> Add stylist Carly | > Meg <br> > Carly |
-| 3. Owner or stylist can click on a stylist name, view stylist info, their client list, add a new client | > Click Meg <br> > ADD NEW CLIENT Stylist: Meg Client: Cindy, 8/20/2017, wavy, female, 111-111-1111   |  Stylist Meg's Page with Cindy added |
-| 4. The newly added client is appended to stylist's client list | Stylist: Meg <br> Client: Cindy | Cindy |
+| 3. Owner or stylist can click on a stylist name, view stylist info | > Click Meg | Name: Meg Years Experience: 3 Education: Gene Juarez |
+| 4. Owner or stylist can add a new client | > Click Meg <br> > ADD NEW CLIENT Stylist: Meg Client: Cindy, 8/20/2017, wavy, female, 111-111-1111   |  Stylist Meg's Page with Cindy added |
 | 5. Owner or stylist can view a clients details by clicking on the clients name | > Cindy | Stylist: Meg Client: Cindy, 8/20/2017, wavy, female, 205-111-2222  |
-| 6. Owner or stylist can delete all stylists and/or clients | DELETE Stylist <br> DELETE clients | There are no stylists <br> There are no clients |
-| 7. Owner or stylist can delete a specific stylist or client | DELETE: Meg from list (Meg Carly)| View: Carly |
-| 8. Owner or stylist can update a client or stylist name | UPDATE Client: Cindy to CiCi <br> UPDATE stylist: Meg to Megan | View Client: CiCi <br> View Stylist: Megan |
+| 6. Owner or stylist can click on a stylist name, view stylist info and their client list | > Click Meg | Name: Meg Years Experience: 3 Education: Gene Juarez <br> Clients: Cindy |
+| 7. Owner or stylist can delete all stylists and/or clients | DELETE Stylist <br> DELETE clients | There are no stylists <br> There are no clients |
+| 8. Owner or stylist can delete a specific stylist or client | DELETE: Meg from list (Meg Carly)| View: Carly |
+| 9. Owner or stylist can update a client or stylist name | UPDATE Client: Cindy to CiCi <br> UPDATE stylist: Meg to Megan | View Client: CiCi <br> View Stylist: Megan |
 
 ## Known Bugs
 

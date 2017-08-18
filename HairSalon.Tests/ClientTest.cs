@@ -17,5 +17,16 @@ namespace HairSalon.Tests
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hair_salon_test;";
     }
 
+    [TestMethod]
+    public void Save_SavesNewClientInfo_Void()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+
+      int expected = 1;
+      int actual = Client.GetAllClients().Count;
+
+      Assert.AreEqual(expected, actual);
+    }
   }
 }

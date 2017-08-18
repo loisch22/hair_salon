@@ -112,9 +112,9 @@ namespace HairSalon.Models
       conn.Close();
     }
 
-    public static List<Stylist> GetAllStylist()
+    public static List<Stylist> GetAllStylists()
     {
-      List<Stylist> allStylist = new List<Stylist> {};
+      List<Stylist> allStylists = new List<Stylist> {};
 
       MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
@@ -125,16 +125,16 @@ namespace HairSalon.Models
 
       while(rdr.Read())
       {
-        int stylist_id = rdr.GetInt32(0);
-        string stylist_name = rdr.GetString(1);
+        int stylistId = rdr.GetInt32(0);
+        string stylistName = rdr.GetString(1);
         int experience = rdr.GetInt32(2);
         string education = rdr.GetString(3);
-        Stylist newStylist = new Stylist(stylist_name, experience, education, stylist_id);
-        allStylist.Add(newStylist);
+        Stylist newStylist = new Stylist(stylistName, experience, education, stylistId);
+        allStylists.Add(newStylist);
         // cmd.ExecuteQuery();
       }
       conn.Close();
-      return allStylist;
+      return allStylists;
     }
 
     public static void DeleteAll()

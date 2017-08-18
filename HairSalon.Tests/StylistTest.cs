@@ -24,7 +24,7 @@ namespace HairSalon.Tests
       newStylist.Save();
 
       int expected = 1;
-      int actual = Stylist.GetAllStylist().Count;
+      int actual = Stylist.GetAllStylists().Count;
 
       Assert.AreEqual(expected, actual);
     }
@@ -36,7 +36,7 @@ namespace HairSalon.Tests
       newStylist.Save();
 
       List<Stylist> expected = new List<Stylist> {newStylist};
-      List<Stylist> actual = Stylist.GetAllStylist();
+      List<Stylist> actual = Stylist.GetAllStylists();
 
       CollectionAssert.AreEqual(expected, actual);
     }
