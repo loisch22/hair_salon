@@ -6,12 +6,12 @@ namespace HairSalon.Models
 {
   public class Stylist
   {
-    private int id;
+    private int _id;
     private string _stylistName;
     private int _experience;
     private string _education;
 
-    public Stylist(string stylistName, string experience, string education, int id = 0)
+    public Stylist(string stylistName, int experience, string education, int id = 0)
     {
       _id = id;
       _stylistName = stylistName;
@@ -19,25 +19,25 @@ namespace HairSalon.Models
       _education = education;
     }
 
-    public override bool Equals(Object otherStylist)
-    {
-       if (!(otherStylist is Stylist))
-       {
-         return false;
-       }
-       else
-       {
-         Stylist newStylist = (Stylist) otherStylist;
-         bool idEquality = (this.GetId() == Stylist.GetId());
-         bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
-         return (idEquality && nameEquality);
-       }
-     }
-
-     public override int GetHashCode()
-     {
-       return this.GetStylistName().GetHashCode();
-     }
+    // public override bool Equals(Object otherStylist)
+    // {
+    //    if (!(otherStylist is Stylist))
+    //    {
+    //      return false;
+    //    }
+    //    else
+    //    {
+    //      Stylist newStylist = (Stylist) otherStylist;
+    //      bool idEquality = (this.GetId() == Stylist.GetId());
+    //      bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
+    //      return (idEquality && nameEquality);
+    //    }
+    //  }
+    //
+    //  public override int GetHashCode()
+    //  {
+    //    return this.GetStylistName().GetHashCode();
+    //  }
 
     public int GetId()
     {
@@ -74,7 +74,7 @@ namespace HairSalon.Models
       MySqlParameter stylistExperienceParameter = new MySqlParameter();
       stylistExperienceParameter.ParameterName = "@experience";
       stylistExperienceParameter.Value = this._experience;
-      cmd.Parameter.Add(stylistExperienceParameter);
+      cmd.Parameters.Add(stylistExperienceParameter);
 
       MySqlParameter stylistEducationParameter  = new MySqlParameter();
       stylistEducationParameter.ParameterName = "@education";
@@ -82,19 +82,39 @@ namespace HairSalon.Models
       cmd.Parameters.Add(stylistEducationParameter);
 
       cmd.ExecuteNonQuery();
-      id = (int) cmd.LastInsertedId;
+      _id = (int) cmd.LastInsertedId;
       conn.Close();
     }
 
     public static List<Stylist> GetAllStylist()
     {
+      List<Stylist> allStylist = new List<Stylist> {};
 
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylists;";
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while(rdr.Read())
+      {
+        int stylist_id = rdr.GetInt32(0);
+        string stylist_name = rdr.GetString(1);
+        int experience = rdr.GetInt32(2);
+        string education = rdr.GetString(3);
+        Stylist newStylist = new Stylist(stylist_name, experience, education, stylist_id);
+        allStylist.Add(newStylist);
+        // cmd.ExecuteQuery();
+      }
+      conn.Close();
+      return allStylist;
     }
 
-    public static List<Stylist> DeleteAll()
-    {
-
-    }
+    // public static List<Stylist> DeleteAll()
+    // {
+    //
+    // }
 
   }
 }
