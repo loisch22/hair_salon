@@ -113,6 +113,7 @@ namespace HairSalon.Models
         string gender = rdr.GetString(3);
         int stylistId = rdr.GetInt32(4);
         int phoneNumber = rdr.GetInt32(5);
+
         Client clientMatch = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
         stylistClients.Add(clientMatch);
       }

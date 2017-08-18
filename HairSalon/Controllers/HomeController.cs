@@ -42,8 +42,33 @@ namespace HairSalon.Controllers
     public ActionResult StylistInfo(int id)
     {
       Stylist stylistInfo = Stylist.FindStylistInfo(id);
-  
+
       return View(stylistInfo);
     }
+
+    [HttpGet("/add/client")]
+    public ActionResult AddClient()
+    {
+
+      return View();
+    }
+
+    [HttpPost("/stylist/{id}/info/client")]
+    public ActionResult ViewStylistClients(int id)
+    {
+      string clientName = Request.Form["clientName"];
+      string hairType = Request.Form["hairType"];
+      string gender = Request.Form["gender"];
+      int phoneNumber = int.Parse(Request.Form["phoneNumber"]);
+
+      Client newClient = new Client(clientName, hairType, gender, id, phoneNumber);
+      newClient.Save();
+      int stylistId = newClient.GetStylistId();
+
+      List<Client> allStylistClients = Client.GetStylistClients(stylistId);
+
+      return View(allStylistClients);
+    }
+
   }
 }

@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+
+<div class="well stylistClients">
+  <ul>
+    @foreach (var client in Model)
+    {
+      <a href="/">@client.GetClientName();</a>
+    }
+  </ul>
+</div>
+
+<a href="/add/client/@Model.GetStylistId()"><button type="button" class="btn btn-success">Add Client</button></a>
+<a href="/"><button type="button" class="btn btn-default start">Exit</button></a>
