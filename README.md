@@ -13,7 +13,7 @@ _This application will allow hair salon employees to view, add, and delete clien
 * CREATE DATABASE hair_salon;
 * SHOW DATABASES;
 * USE hair_salon;
-* CREATE TABLE clients (id serial PRIMARY KEY, client_name VARCHAR(255), appt_date DATE, hair_type VARCHAR(255), gender VARCHAR(255), stylist_id INT);
+* CREATE TABLE clients (id serial PRIMARY KEY, client_name VARCHAR(255), hair_type VARCHAR(255), gender VARCHAR(255), stylist_id INT);
 * CREATE TABLE stylists (id serial PRIMARY KEY, stylist_name VARCHAR(255), experience INT, education VARCHAR(255));
 
 ## User Story Specifications (BDD)

@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Add a New Stylist</h1>
+
+<form action="/new/stylist" method="post" class="form-group">
+  <label for="stylistName">Stylist Name:</label>
+  <input type="text" name="stylistName" class="form-control">
+  <label for="experience">Years Experience:</label>
+  <input type="number" name="experience" class="form-control">
+  <label for="education">Education:</label>
+  <input type="text" name="education" class="form-control">
+  <button type="submit" class="btn btn-success">Add Stylist</button>
+</form>
+
+<a href="/"><button type="button" class="btn btn-default start">Cancel</button></a>

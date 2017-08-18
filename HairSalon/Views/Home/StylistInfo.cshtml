@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>@Model.GetStylistName()</h1>
+
+<div class="well newStylist">
+  <p><strong>Name:</strong>
+    <br>
+    @Model.GetStylistName()
+  </p>
+  <p><strong>Years Experience:</strong>
+    <br>
+    @Model.GetStylistExperience()
+  </p>
+  <p><strong>Education:</strong>
+    <br>
+    @Model.GetStylistEdu()
+  </p>
+</div>
+
+<div class="well stylistClients">
+  
+</div>

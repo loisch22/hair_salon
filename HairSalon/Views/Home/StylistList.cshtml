@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Stylists</h1>
+
+<ul>
+  @foreach (var stylist in Model)
+  {
+    <a href="/stylist/info/@Model.GetId()"><li>@stylist.GetStylistName()</li></a>
+  }
+</ul>
+
+
+<a href="/stylist/list"><button type="button" class="btn btn-default start">View All Stylist</button></a>
+<a href="/"><button type="button" class="btn btn-default start">Finish</button></a>
