@@ -53,25 +53,25 @@ namespace HairSalon.Models
       return _phoneNumber;
     }
 
-    // public override bool Equals(Object otherClient)
-    // {
-    //    if (!(otherClient is Client))
-    //    {
-    //      return false;
-    //    }
-    //    else
-    //    {
-    //      Client newClient = (Client) otherClient;
-    //      bool idEquality = (this.GetId() == Client.GetId());
-    //      bool nameEquality = (this.GetClientName() == newClient.GetStylistName());
-    //      return (idEquality && nameEquality);
-    //    }
-    //  }
-    //
-    // public override int GetHashCode()
-    // {
-    //  return this.GetClientName().GetHashCode();
-    // }
+    public override bool Equals(Object otherClient)
+    {
+       if (!(otherClient is Client))
+       {
+         return false;
+       }
+       else
+       {
+         Client newClient = (Client) otherClient;
+         bool idEquality = (this.GetId() == newClient.GetId());
+         bool nameEquality = (this.GetClientName() == newClient.GetClientName());
+         return (idEquality && nameEquality);
+       }
+     }
+
+    public override int GetHashCode()
+    {
+     return this.GetClientName().GetHashCode();
+    }
 
     public void Save()
     {
@@ -130,10 +130,20 @@ namespace HairSalon.Models
         int phoneNumber = rdr.GetInt32(5);
         Client newClient = new Client(clientName, hairType, gender, stylistId, phoneNumber);
         allClients.Add(newClient);
-        // cmd.ExecuteQuery();
       }
       conn.Close();
       return allClients;
+    }
+
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"TRUNCATE TABLE clients;";
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
     }
   }
 }
