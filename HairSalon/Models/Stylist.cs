@@ -40,23 +40,50 @@ namespace HairSalon.Models
 
     public override bool Equals(Object otherStylist)
     {
-       if (!(otherStylist is Stylist))
-       {
-         return false;
-       }
-       else
-       {
-         Stylist newStylist = (Stylist) otherStylist;
-         bool idEquality = (this.GetId() == newStylist.GetId());
-         bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
-         return (idEquality && nameEquality);
-       }
-     }
+      if (!(otherStylist is Stylist))
+      {
+        return false;
+      }
+      else
+      {
+        Stylist newStylist = (Stylist) otherStylist;
+        bool idEquality = (this.GetId() == newStylist.GetId());
+        bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
+        return (idEquality && nameEquality);
+      }
+    }
 
-     public override int GetHashCode()
-     {
-       return this.GetStylistName().GetHashCode();
-     }
+    public override int GetHashCode()
+    {
+      return this.GetStylistName().GetHashCode();
+    }
+
+    public static Stylist FindStylistInfo(int stylidId)
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylists WHERE id = @id;";
+
+      MySqlParameter stylistInfoParameter = new MySqlParameter();
+      stylistInfoParameter.ParameterName = "@id";
+      stylistInfoParameter.Value = stylidId;
+      cmd.Parameters.Add(stylistInfoParameter);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      Stylist foundStylist = new Stylist("", 0, "");
+
+      while(rdr.Read())
+      {
+        int id = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        int experience = rdr.GetInt32(2);
+        string education = rdr.GetString(3);
+        foundStylist = new Stylist (name, experience, education, id);
+      }
+      conn.Close();
+      return foundStylist;
+    }
 
     public void Save()
     {

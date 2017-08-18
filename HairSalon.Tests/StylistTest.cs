@@ -40,5 +40,17 @@ namespace HairSalon.Tests
 
       CollectionAssert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void FindStylistInfo_ReturnsStylistDetails_Void()
+    {
+      Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez", 1);
+      newStylist.Save();
+
+      Stylist expected = newStylist;
+      Stylist actual = Stylist.FindStylistInfo(1);
+
+      Assert.AreEqual(expected, actual);
+    }
   }
 }
