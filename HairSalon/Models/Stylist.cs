@@ -76,10 +76,10 @@ namespace HairSalon.Models
       while(rdr.Read())
       {
         int id = rdr.GetInt32(0);
-        string name = rdr.GetString(1);
+        string stylistName = rdr.GetString(1);
         int experience = rdr.GetInt32(2);
         string education = rdr.GetString(3);
-        foundStylist = new Stylist (name, experience, education, id);
+        foundStylist = new Stylist (stylistName, experience, education, id);
       }
       conn.Close();
       return foundStylist;

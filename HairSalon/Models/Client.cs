@@ -73,6 +73,35 @@ namespace HairSalon.Models
      return this.GetClientName().GetHashCode();
     }
 
+    public static Client FindClientInfo(int clientId)
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients WHERE id = @id;";
+
+      MySqlParameter clientIdParameter = new MySqlParameter();
+      clientIdParameter.ParameterName = "@id";
+      clientIdParameter.Value = clientId;
+      cmd.Parameters.Add(clientIdParameter);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      Client foundClient = new Client("", "", "", 0, 0);
+
+      while(rdr.Read())
+      {
+        int id = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        string hairType = rdr.GetString(2);
+        string gender = rdr.GetString(3);
+        int stylistId = rdr.GetInt32(4);
+        int phoneNumber = rdr.GetInt32(5);
+        foundClient = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
+      }
+      conn.Close();
+      return foundClient;
+    }
+
     public void Save()
     {
       MySqlConnection conn = DB.Connection() as MySqlConnection;
@@ -106,6 +135,7 @@ namespace HairSalon.Models
       cmd.Parameters.Add(phoneNumberParameter);
 
       cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
       conn.Close();
     }
 
