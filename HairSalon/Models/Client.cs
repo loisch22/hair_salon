@@ -73,6 +73,16 @@ namespace HairSalon.Models
      return this.GetClientName().GetHashCode();
     }
 
+    public static List<Client> GetStylistClients(int stylistId)
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM clients INNER JOIN stylists ON clients.stylist_id = stylists.stylist_name WHERE stylist_id = @stylistId;";
+
+
+    }
+
     public static Client FindClientInfo(int clientId)
     {
       MySqlConnection conn = DB.Connection() as MySqlConnection;
