@@ -91,7 +91,25 @@ namespace HairSalon.Tests
 
       bool expected = false;
       bool actual = Client.GetAllClients().Contains(newClient);
-      Console.WriteLine(actual);
+
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void UpdateClient_UpdatesClientName_Void()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient2 = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+      newClient2.Save();
+      string newName = "CiCi";
+
+      newClient.UpdateClient(newName);
+
+      Client expected = new Client("CiCi", "wavy", "female", 1, 1111111111);;
+      Client actual = Client.GetAllClients()[0];
+      Console.WriteLine(actual.GetClientName());
+
       Assert.AreEqual(expected, actual);
     }
   }

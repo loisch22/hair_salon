@@ -73,6 +73,22 @@ namespace HairSalon.Models
      return this.GetClientName().GetHashCode();
     }
 
+    public void UpdateClient(string newName)
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE clients SET client_name = @client_name;";
+
+      MySqlParameter clientNameParameter = new MySqlParameter();
+      clientNameParameter.ParameterName = "@client_name";
+      clientNameParameter.Value = newName;
+      cmd.Parameters.Add(clientNameParameter);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
     public static List<Client> GetStylistClients(int searchStylist)
     {
       List<Client> stylistClients = new List<Client> {};
@@ -133,43 +149,6 @@ namespace HairSalon.Models
       return foundClient;
     }
 
-    public void Save()
-    {
-      MySqlConnection conn = DB.Connection() as MySqlConnection;
-      conn.Open();
-      var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO clients(client_name, hair_type, gender, stylist_id, phone_number) VALUES (@client_name, @hair_type, @gender, @stylist_id, @phone_number);";
-
-      MySqlParameter clientNameParameter = new MySqlParameter();
-      clientNameParameter.ParameterName = "@client_name";
-      clientNameParameter.Value = this._clientName;
-      cmd.Parameters.Add(clientNameParameter);
-
-      MySqlParameter hairTypeParameter = new MySqlParameter();
-      hairTypeParameter.ParameterName = "@hair_type";
-      hairTypeParameter.Value = this._hairType;
-      cmd.Parameters.Add(hairTypeParameter);
-
-      MySqlParameter genderParameter = new MySqlParameter();
-      genderParameter.ParameterName = "@gender";
-      genderParameter.Value = this._gender;
-      cmd.Parameters.Add(genderParameter);
-
-      MySqlParameter stylistIdParameter = new MySqlParameter();
-      stylistIdParameter.ParameterName = "@stylist_id";
-      stylistIdParameter.Value = this._stylistId;
-      cmd.Parameters.Add(stylistIdParameter);
-
-      MySqlParameter phoneNumberParameter = new MySqlParameter();
-      phoneNumberParameter.ParameterName = "@phone_number";
-      phoneNumberParameter.Value = this._phoneNumber;
-      cmd.Parameters.Add(phoneNumberParameter);
-
-      cmd.ExecuteNonQuery();
-      _id = (int) cmd.LastInsertedId;
-      conn.Close();
-    }
-
     public static List<Client> GetAllClients()
     {
       List<Client> allClients = new List<Client> {};
@@ -220,6 +199,43 @@ namespace HairSalon.Models
       cmd.CommandText = @"TRUNCATE TABLE clients;";
 
       cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO clients(client_name, hair_type, gender, stylist_id, phone_number) VALUES (@client_name, @hair_type, @gender, @stylist_id, @phone_number);";
+
+      MySqlParameter clientNameParameter = new MySqlParameter();
+      clientNameParameter.ParameterName = "@client_name";
+      clientNameParameter.Value = this._clientName;
+      cmd.Parameters.Add(clientNameParameter);
+
+      MySqlParameter hairTypeParameter = new MySqlParameter();
+      hairTypeParameter.ParameterName = "@hair_type";
+      hairTypeParameter.Value = this._hairType;
+      cmd.Parameters.Add(hairTypeParameter);
+
+      MySqlParameter genderParameter = new MySqlParameter();
+      genderParameter.ParameterName = "@gender";
+      genderParameter.Value = this._gender;
+      cmd.Parameters.Add(genderParameter);
+
+      MySqlParameter stylistIdParameter = new MySqlParameter();
+      stylistIdParameter.ParameterName = "@stylist_id";
+      stylistIdParameter.Value = this._stylistId;
+      cmd.Parameters.Add(stylistIdParameter);
+
+      MySqlParameter phoneNumberParameter = new MySqlParameter();
+      phoneNumberParameter.ParameterName = "@phone_number";
+      phoneNumberParameter.Value = this._phoneNumber;
+      cmd.Parameters.Add(phoneNumberParameter);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
       conn.Close();
     }
   }
