@@ -78,5 +78,21 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void DeleteClient_DeletesSpecificClient_Void()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient2 = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+      newClient2.Save();
+      int clientId = newClient.GetId();
+      Client.DeleteClient(clientId);
+
+      bool expected = false;
+      bool actual = Client.GetAllClients().Contains(newClient);
+      Console.WriteLine(actual);
+      Assert.AreEqual(expected, actual);
+    }
   }
 }
