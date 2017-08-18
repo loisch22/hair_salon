@@ -46,11 +46,12 @@ namespace HairSalon.Controllers
       return View(stylistInfo);
     }
 
-    [HttpGet("/add/client")]
-    public ActionResult AddClient()
+    [HttpGet("/add/client/{id}")]
+    public ActionResult AddClient(int id)
     {
+      Stylist stylistInfo = Stylist.FindStylistInfo(id);
 
-      return View();
+      return View(stylistInfo);
     }
 
     [HttpPost("/stylist/{id}/info/client")]
