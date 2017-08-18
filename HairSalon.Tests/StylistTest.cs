@@ -10,7 +10,7 @@ namespace HairSalon.Tests
   {
     public void Dispose()
     {
-      // Stylist.DeleteAll();
+      Stylist.DeleteAll();
     }
     public StylistTest()
     {
@@ -29,16 +29,16 @@ namespace HairSalon.Tests
       Assert.AreEqual(expected, actual);
     }
 
-    // [TestMethod]
-    // public void GetAll_ReturnAllStylistAdded_Void()
-    // {
-    //   Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
-    //   Stylist.Save();
-    //
-    //   List<Stylist> expected = new List<Stylist> {newStylist};
-    //   List<Stylist> actual = Stylist.GetAllStylist();
-    //
-    //   CollectionAssert.AreEqual(expected, actual);
-    // }
+    [TestMethod]
+    public void GetAll_ReturnAllStylistAdded_Void()
+    {
+      Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
+      newStylist.Save();
+
+      List<Stylist> expected = new List<Stylist> {newStylist};
+      List<Stylist> actual = Stylist.GetAllStylist();
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
   }
 }

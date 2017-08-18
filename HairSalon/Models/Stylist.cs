@@ -18,27 +18,6 @@ namespace HairSalon.Models
       _experience = experience;
       _education = education;
     }
-
-    // public override bool Equals(Object otherStylist)
-    // {
-    //    if (!(otherStylist is Stylist))
-    //    {
-    //      return false;
-    //    }
-    //    else
-    //    {
-    //      Stylist newStylist = (Stylist) otherStylist;
-    //      bool idEquality = (this.GetId() == Stylist.GetId());
-    //      bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
-    //      return (idEquality && nameEquality);
-    //    }
-    //  }
-    //
-    //  public override int GetHashCode()
-    //  {
-    //    return this.GetStylistName().GetHashCode();
-    //  }
-
     public int GetId()
     {
       return _id;
@@ -58,6 +37,26 @@ namespace HairSalon.Models
     {
       return _education;
     }
+
+    public override bool Equals(Object otherStylist)
+    {
+       if (!(otherStylist is Stylist))
+       {
+         return false;
+       }
+       else
+       {
+         Stylist newStylist = (Stylist) otherStylist;
+         bool idEquality = (this.GetId() == newStylist.GetId());
+         bool nameEquality = (this.GetStylistName() == newStylist.GetStylistName());
+         return (idEquality && nameEquality);
+       }
+     }
+
+     public override int GetHashCode()
+     {
+       return this.GetStylistName().GetHashCode();
+     }
 
     public void Save()
     {
@@ -111,10 +110,16 @@ namespace HairSalon.Models
       return allStylist;
     }
 
-    // public static List<Stylist> DeleteAll()
-    // {
-    //
-    // }
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"TRUNCATE TABLE stylists;";
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
 
   }
 }
