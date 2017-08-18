@@ -8,7 +8,7 @@ namespace HairSalon.Models
   {
     private int id;
     private string _stylistName;
-    private string _experience;
+    private int _experience;
     private string _education;
 
     public Stylist(string stylistName, string experience, string education, int id = 0)
@@ -49,7 +49,7 @@ namespace HairSalon.Models
       return _stylistName;
     }
 
-    public string GetStylistExperience()
+    public int GetStylistExperience()
     {
       return _experience;
     }
@@ -59,7 +59,34 @@ namespace HairSalon.Models
       return _education;
     }
 
-    public static List<Stylist> GetAll()
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists(stylist_name, experience, education) VALUES (@stylistName, @experience, @education);";
+
+      MySqlParameter stylistNameParameter  = new MySqlParameter();
+      stylistNameParameter.ParameterName = "@stylistName";
+      stylistNameParameter.Value = this._stylistName;
+      cmd.Parameters.Add(stylistNameParameter);
+
+      MySqlParameter stylistExperienceParameter = new MySqlParameter();
+      stylistExperienceParameter.ParameterName = "@experience";
+      stylistExperienceParameter.Value = this._experience;
+      cmd.Parameter.Add(stylistExperienceParameter);
+
+      MySqlParameter stylistEducationParameter  = new MySqlParameter();
+      stylistEducationParameter.ParameterName = "@education";
+      stylistEducationParameter.Value = this._education;
+      cmd.Parameters.Add(stylistEducationParameter);
+
+      cmd.ExecuteNonQuery();
+      id = (int) cmd.LastInsertedId;
+      conn.Close();
+    }
+
+    public static List<Stylist> GetAllStylist()
     {
 
     }
