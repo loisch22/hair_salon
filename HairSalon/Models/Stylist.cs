@@ -58,7 +58,7 @@ namespace HairSalon.Models
       return this.GetStylistName().GetHashCode();
     }
 
-    public static Stylist FindStylistInfo(int stylidId)
+    public static Stylist FindStylistInfo(int stylistId)
     {
       MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
@@ -67,7 +67,7 @@ namespace HairSalon.Models
 
       MySqlParameter stylistInfoParameter = new MySqlParameter();
       stylistInfoParameter.ParameterName = "@id";
-      stylistInfoParameter.Value = stylidId;
+      stylistInfoParameter.Value = stylistId;
       cmd.Parameters.Add(stylistInfoParameter);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;

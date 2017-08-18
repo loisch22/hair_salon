@@ -45,11 +45,25 @@ namespace HairSalon.Tests
     {
       Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
       newClient.Save();
+      int stylistId = newClient.GetStylistId();
 
       Client expected = newClient;
-      Client actual = Client.FindClientInfo(1);
+      Client actual = Client.FindClientInfo(stylistId);
 
       Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void GetStylistClients_ReturnClientsThatBelongToSameStylist_ClientList()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+      int searchStylist = newClient.GetStylistId();
+
+      List<Client> expected = new List<Client> {newClient};
+      List<Client> actual = Client.GetStylistClients(searchStylist);
+
+      CollectionAssert.AreEqual(expected, actual);
     }
   }
 }

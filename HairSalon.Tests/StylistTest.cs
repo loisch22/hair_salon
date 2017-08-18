@@ -30,7 +30,7 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void GetAll_ReturnAllStylistAdded_Void()
+    public void GetAll_ReturnAllStylistAdded_AllClientsList()
     {
       Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
       newStylist.Save();
@@ -42,13 +42,14 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void FindStylistInfo_ReturnsStylistDetails_Void()
+    public void FindStylistInfo_ReturnsStylistDetails_ClientList()
     {
       Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez", 1);
       newStylist.Save();
+      int stylistId = newStylist.GetId();
 
       Stylist expected = newStylist;
-      Stylist actual = Stylist.FindStylistInfo(1);
+      Stylist actual = Stylist.FindStylistInfo(stylistId);
 
       Assert.AreEqual(expected, actual);
     }

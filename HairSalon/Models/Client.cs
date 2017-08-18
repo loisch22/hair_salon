@@ -73,14 +73,35 @@ namespace HairSalon.Models
      return this.GetClientName().GetHashCode();
     }
 
-    public static List<Client> GetStylistClients(int stylistId)
+    public static List<Client> GetStylistClients(int searchStylist)
     {
+      List<Client> stylistClients = new List<Client> {};
+
       MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM clients INNER JOIN stylists ON clients.stylist_id = stylists.stylist_name WHERE stylist_id = @stylistId;";
+      cmd.CommandText = @"SELECT * FROM clients WHERE stylist_id = @stylist_id;";
 
+      MySqlParameter stylistIdParameter = new MySqlParameter();
+      stylistIdParameter.ParameterName = "@stylist_id";
+      stylistIdParameter.Value = searchStylist;
+      cmd.Parameters.Add(stylistIdParameter);
 
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while(rdr.Read())
+      {
+        int id = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        string hairType = rdr.GetString(2);
+        string gender = rdr.GetString(3);
+        int stylistId = rdr.GetInt32(4);
+        int phoneNumber = rdr.GetInt32(5);
+        Client clientMatch = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
+        stylistClients.Add(clientMatch);
+      }
+      conn.Close();
+      return stylistClients;
     }
 
     public static Client FindClientInfo(int clientId)
