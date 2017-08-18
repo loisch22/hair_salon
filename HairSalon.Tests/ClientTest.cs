@@ -108,7 +108,6 @@ namespace HairSalon.Tests
 
       Client expected = new Client("CiCi", "wavy", "female", 1, 1111111111);;
       Client actual = Client.GetAllClients()[0];
-      Console.WriteLine(actual.GetClientName());
 
       Assert.AreEqual(expected, actual);
     }

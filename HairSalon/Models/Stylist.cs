@@ -85,30 +85,19 @@ namespace HairSalon.Models
       return foundStylist;
     }
 
-    public void Save()
+    public void UpdateStylist(string newName)
     {
       MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO stylists(stylist_name, experience, education) VALUES (@stylistName, @experience, @education);";
+      cmd.CommandText = @"UPDATE stylists SET stylist_name = @stylist_name;";
 
-      MySqlParameter stylistNameParameter  = new MySqlParameter();
-      stylistNameParameter.ParameterName = "@stylistName";
-      stylistNameParameter.Value = this._stylistName;
+      MySqlParameter stylistNameParameter = new MySqlParameter();
+      stylistNameParameter.ParameterName = "@stylist_name";
+      stylistNameParameter.Value = newName;
       cmd.Parameters.Add(stylistNameParameter);
 
-      MySqlParameter stylistExperienceParameter = new MySqlParameter();
-      stylistExperienceParameter.ParameterName = "@experience";
-      stylistExperienceParameter.Value = this._experience;
-      cmd.Parameters.Add(stylistExperienceParameter);
-
-      MySqlParameter stylistEducationParameter  = new MySqlParameter();
-      stylistEducationParameter.ParameterName = "@education";
-      stylistEducationParameter.Value = this._education;
-      cmd.Parameters.Add(stylistEducationParameter);
-
       cmd.ExecuteNonQuery();
-      _id = (int) cmd.LastInsertedId;
       conn.Close();
     }
 
@@ -164,5 +153,31 @@ namespace HairSalon.Models
       conn.Close();
     }
 
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection() as MySqlConnection;
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists(stylist_name, experience, education) VALUES (@stylistName, @experience, @education);";
+
+      MySqlParameter stylistNameParameter  = new MySqlParameter();
+      stylistNameParameter.ParameterName = "@stylistName";
+      stylistNameParameter.Value = this._stylistName;
+      cmd.Parameters.Add(stylistNameParameter);
+
+      MySqlParameter stylistExperienceParameter = new MySqlParameter();
+      stylistExperienceParameter.ParameterName = "@experience";
+      stylistExperienceParameter.Value = this._experience;
+      cmd.Parameters.Add(stylistExperienceParameter);
+
+      MySqlParameter stylistEducationParameter  = new MySqlParameter();
+      stylistEducationParameter.ParameterName = "@education";
+      stylistEducationParameter.Value = this._education;
+      cmd.Parameters.Add(stylistEducationParameter);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+    }
   }
 }

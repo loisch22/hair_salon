@@ -82,5 +82,24 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void UpdateStylist_UpdatesStylistName_Void()
+    {
+      Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez", 1);
+      newStylist.Save();
+      Stylist newStylist2 = new Stylist("Meg", 3, "Gene Juarez", 1);
+      newStylist.Save();
+      newStylist2.Save();
+      string newName = "Megan";
+
+      newStylist.UpdateStylist(newName);
+
+      Stylist expected = new Stylist("Megan", 3, "Gene Juarez", 1);;
+      Stylist actual = Stylist.GetAllStylists()[0];
+      Console.WriteLine(actual.GetStylistName());
+
+      Assert.AreEqual(expected, actual);
+    }
   }
 }
