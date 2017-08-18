@@ -75,8 +75,6 @@ namespace HairSalon.Tests
 
       int expected = 0;
       int actual = Client.GetAllClients().Count;
-      Console.WriteLine(actual);
-
 
       Assert.AreEqual(expected, actual);
     }
