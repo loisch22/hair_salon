@@ -2,23 +2,25 @@
   Layout = "_Layout";
 }
 
-<h1>Your stylist @Model.GetStylistName() has been added:</h1>
+<body id="new-stylist">
+  <h1 class="header-new-stylist">Stylist @Model.GetStylistName() has been added:</h1>
 
-<div class="well newStylist">
-  <p><strong>Name:</strong>
-    <br>
-    @Model.GetStylistName()
-  </p>
-  <p><strong>Years Experience:</strong>
-    <br>
-    @Model.GetStylistExperience()
-  </p>
-  <p><strong>Education:</strong>
-    <br>
-    @Model.GetStylistEdu()
-  </p>
-</div>
-
-
-<a href="/stylist/list"><button type="button" class="btn btn-default start">View All Stylist</button></a>
-<a href="/"><button type="button" class="btn btn-default start">Finish</button></a>
+  <div class="container">
+    <div class="well new-stylist">
+      <p class="stylist"><strong>Name:</strong>
+        <br>
+        @Model.GetStylistName()
+      </p>
+      <p class="stylist"><strong>Years Experience:</strong>
+        <br>
+        @Model.GetStylistExperience()
+      </p>
+      <p class="stylist"><strong>Education:</strong>
+        <br>
+        @Model.GetStylistEdu()
+      </p>
+    </div>
+    <a href="/stylist/list"><button type="button" class="btn btn-default view-all">View All Stylist</button></a>
+    <a href="/"><button type="button" class="btn btn-default finish">Finish</button></a>
+  </div>
+</body>

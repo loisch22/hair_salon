@@ -2,16 +2,21 @@
   Layout = "_Layout";
 }
 
-<h1>Add a New Stylist</h1>
+<body id="stylist-form">
+  <h1 class="header">Add New Stylist</h1>
 
-<form action="/new/stylist" method="post" class="form-group">
-  <label for="stylistName">Stylist Name:</label>
-  <input type="text" name="stylistName" class="form-control">
-  <label for="experience">Years Experience:</label>
-  <input type="number" name="experience" class="form-control">
-  <label for="education">Education:</label>
-  <input type="text" name="education" class="form-control">
-  <button type="submit" class="btn btn-success">Add Stylist</button>
-</form>
-
-<a href="/"><button type="button" class="btn btn-default start">Cancel</button></a>
+  <div class="container">
+    <div class="well form-stylist">
+      <form action="/new/stylist" method="post" class="form-group">
+        <label for="stylistName">Stylist Name:</label>
+        <input type="text" name="stylistName" class="form-control stylist">
+        <label for="experience">Years Experience:</label>
+        <input type="number" name="experience" class="form-control stylist">
+        <label for="education">Education:</label>
+        <input type="text" name="education" class="form-control stylist">
+        <button type="submit" class="btn btn-success add-button">Add Stylist</button>
+      </form>
+        <a href="/"><button type="button" class="btn btn-default cancel">Cancel</button></a>
+    </div>
+  </div>
+</body>

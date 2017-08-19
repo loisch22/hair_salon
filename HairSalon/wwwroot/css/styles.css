@@ -1,14 +1,10 @@
-#index {
-  background-image: url("/img/hair2.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 100vw;
+html {
   height: 100%;
 }
-#footer {
-  margin-top: 15%;
-  text-align: right;
-  padding-right: 15px;
+#index {
+  background-image: url("/img/hair2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .move-right {
   margin-left: 50%;
@@ -29,11 +25,13 @@
   text-align: center;
   color: #ffffff;
   letter-spacing: 5px;
+  font-family: 'Open Sans', sans-serif;
 }
 .greeting-bottom {
   font-size: 60px;
   margin-top: 13%;
   letter-spacing: 9px;
+  font-weight: bolder;
 }
 .start {
   margin-top: 5%;
@@ -45,7 +43,7 @@
   border: solid 2px;
   color: #e3e3e3;
 }
-.start:hover {
+.start:hover, .view-all:hover, .finish:hover {
   background: #0d0d0d;
   border-color: #0d0d0d;
   color: #e3e3e3;
@@ -78,4 +76,114 @@
   border: none;
   letter-spacing: 5px;
   color: #ffffff;
+}
+#stylist-form {
+  background-image: url("/img/bckgrd2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.header {
+  text-align: center;
+  font-family: 'IM Fell Great Primer', serif;
+  font-size: 50px;
+  letter-spacing: 20px;
+  margin: 5% 20% 6% 20%;
+  padding: 15px 2% 15px 2%;
+  color: #ffffff;
+  background-color: #1e1e1e;
+  opacity: .6;
+}
+.form-stylist {
+  opacity: .7;
+  background-color: #1e1e1e;
+  border-color: #1e1e1e;
+  border-radius: 0;
+  margin-right: 50%;
+  margin-top: 10% 50% 3% 2%;
+  padding: 70px;
+  color: #ffffff;
+  letter-spacing: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+}
+label, .stylist {
+  margin-bottom: 20px;
+  border-radius: 0;
+}
+.add-button, .cancel {
+  float: right;
+  margin: 10px 0px 10px 20px;
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+.add-button {
+  background-color: #3c6094;
+  border-color: 	#3c6094;
+}
+.add-button:hover, .add-stylist-list:hover {
+  background-color: #000033;
+  border-color: #000033;
+}
+.cancel:hover {
+  background-color: #602525;
+  border-color: #602525;
+  color: #ffffff;
+}
+#new-stylist {
+  background-image: url("/img/sinks.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.header-new-stylist {
+  text-align: center;
+  font-family: 'IM Fell Great Primer', serif;
+  font-size: 50px;
+  letter-spacing: 20px;
+  margin: 5% 10% 6% 10%;
+  padding: 15px 2% 15px 2%;
+  color: #ffffff;
+  background-color: #1e1e1e;
+  opacity: .7;
+}
+.new-stylist, .stylist-list {
+  opacity: .7;
+  margin: 5%;
+}
+.stylist, .stylist-list {
+  font-size: 20px;
+  color: #000000;
+  letter-spacing: 5px;
+  text-align: center;
+}
+.view-all, .finish, .add-stylist-list, .delete {
+  float: right;
+  margin-top: 10%;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  letter-spacing: 4px;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  opacity: .9;
+  background-color: #c7bebe;
+  border: solid #c7bebe 2px;
+  border-radius: 1;
+  color: #000000;
+}
+#view-all-stylist {
+  background-image: url("/img/hair-salon.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.stylist-name, .stylist-name:visited {
+  list-style: none;
+  color: #000000;
+  font-size: 25px;
+}
+.stylist-name:hover, .stylist-name:active {
+  list-style: none;
+  color: #000000;
+  font-size: 25px;
+  text-decoration: none;
+  color: 	#3c6094;
 }

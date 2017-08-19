@@ -2,15 +2,20 @@
   Layout = "_Layout";
 }
 
-<h1>Stylists</h1>
+<body id="view-all-stylist">
+      <h1 class="header">All Stylists</h1>
+      <div class="container">
+        <div class="well stylist-list">
+        <ul>
+          @foreach (var stylist in Model)
+          {
+            <a class="stylist-name" href="/stylist/info/@stylist.GetId()"><li>@stylist.GetStylistName()</li></a>
+          }
+        </ul>
 
-<ul>
-  @foreach (var stylist in Model)
-  {
-    <a href="/stylist/info/@stylist.GetId()"><li>@stylist.GetStylistName()</li></a>
-  }
-</ul>
-
-<a href="/stylist/form"><button type="button" class="btn btn-success navbar-btn">Add Stylist</button></a>
-<a href="/delete/all/stylists"><button type="button" class="btn btn-danger start">Delete All</button></a>
-<a href="/"><button type="button" class="btn btn-default start">Finish</button></a>
+      <a href="/stylist/form"><button type="button" class="btn btn-success add-stylist-list">Add Stylist</button></a>
+      <a href="/delete/all/stylists"><button type="button" class="btn btn-danger delete">Delete All</button></a>
+      <a href="/"><button type="button" class="btn btn-default finish">Finish</button></a>
+    </div>
+  </div>
+</body>
