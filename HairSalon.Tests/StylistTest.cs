@@ -19,7 +19,7 @@ namespace HairSalon.Tests
     [TestMethod]
     public void GetAllStylists_CategoriesEmptyAtFirst_0()
     {
-      int result = Stylist.GetAllStylists();
+      int result = Stylist.GetAllStylists().Count;
 
       Assert.AreEqual(0, result);
     }
