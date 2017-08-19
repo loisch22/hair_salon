@@ -129,5 +129,26 @@ namespace HairSalon.Controllers
 
       return View("StylistList", newList);
     }
+
+    [HttpGet("/update/client/{id}")]
+    public ActionResult UpdateClient(int id)
+    {
+      Client searchClient = Client.FindClientInfo(id);
+      return View(searchClient);
+    }
+
+    [HttpPost("/update/client/{id}")]
+    public ActionResult UpdateClientPost(int id)
+    {
+      Client searchClient = Client.FindClientInfo(id);
+
+      string newName = Request.Form["newName"];
+      searchClient.UpdateClient(newName);
+
+      Client updatedName = Client.FindClientInfo(id);
+
+      return View("ClientDetail", updatedName);
+    }
+
   }
 }
