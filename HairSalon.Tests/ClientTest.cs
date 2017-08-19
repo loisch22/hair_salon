@@ -32,17 +32,28 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(newClient, newClient2);
     }
-    // [TestMethod]
-    // public void Save_SavesNewClientInfo_Void()
-    // {
-    //   Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
-    //   newClient.Save();
-    //
-    //   int expected = 1;
-    //   int actual = Client.GetAllClients().Count;
-    //
-    //   Assert.AreEqual(expected, actual);
-    // }
+    [TestMethod]
+    public void Save_SavesNewClientInfo_Void()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+
+      int expected = 1;
+      int actual = Client.GetAllClients().Count;
+
+      Assert.AreEqual(expected, actual);
+    }
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToClients_Id()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      newClient.Save();
+
+      Client savedClient = Client.GetAllClients()[0];
+
+      int expected = savedClient.GetId();
+      int actual = newClient.GetId();
+    }
     // [TestMethod]
     // public void GetAllClients_ReturnsAllClients_ClientList()
     // {
