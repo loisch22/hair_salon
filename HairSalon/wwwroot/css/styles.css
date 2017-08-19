@@ -209,7 +209,7 @@ label, .stylist, .client {
   font-size: 25px;
 }
 .stylist-name:hover, .stylist-name:active, .client-name:hover, .client-name:active {
-  list-style: none;
+  list-style-type: none;
   color: #000000;
   font-size: 25px;
   text-decoration: none;

@@ -23,8 +23,8 @@
         @Model.GetPhoneNumber()
       </p>
       <a href="/update/client/@Model.GetId()"><button type="button" class="btn btn-warning update">Update Client Name</button></a>
-      <a href="/delete/client/@Model.GetId()"><button type="button" class="btn btn-danger delete">Delete @Model.GetClientName()</button></a>
-      <a href="/"><button type="button" class="btn btn-success finish">Exit</button></a>
+      <a href="/delete/@Model.GetId()/client"><button type="button" class="btn btn-danger delete">Delete @Model.GetClientName()</button></a>
+      <a href="/view/all/clients/@Model.GetId()/back"><button type="button" class="btn btn-success finish">Exit</button></a>
     </div>
   </div>
 </body>

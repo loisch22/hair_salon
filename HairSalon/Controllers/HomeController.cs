@@ -94,6 +94,18 @@ namespace HairSalon.Controllers
       return View(clientList);
     }
 
+    [HttpGet("/view/all/clients/{id}/back")]
+    public ActionResult BackToStylistClientList(int id)
+    {
+      Client searchClient = Client.FindClientInfo(id);
+      int stylistId = searchClient.GetStylistId();
+      List<Client> clientList = Client.GetStylistClients(stylistId);
+
+      List<Stylist> allStylist = Stylist.GetAllStylists();
+
+      return View("StylistList", allStylist);
+    }
+
     [HttpGet("/delete/all/clients")]
     public ActionResult DeleteAllClients()
     {
@@ -114,14 +126,15 @@ namespace HairSalon.Controllers
       return View("StylistList", newList);
     }
 
-    [HttpGet("/delete/client/{id}")]
+    [HttpGet("/delete/{id}/client")]
     public ActionResult DeleteClient(int id)
     {
       Client.DeleteClient(id);
-
       List<Client> newList = Client.GetAllClients();
 
-      return View("StylistList", newList);
+      List<Stylist> allStylist = Stylist.GetAllStylists();
+
+      return View("StylistList", allStylist);
     }
 
     [HttpGet("/update/client/{id}")]

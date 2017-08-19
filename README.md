@@ -32,7 +32,8 @@ _This application will allow hair salon employees to view, add, and delete clien
 
 ## Known Bugs
 
-_No known bugs_
+_Can't add new client from client list._
+_UI can be improved when adding new client from list of no clients, also have the exit button go back to list of stylist instead of home from that same page._
 
 
 ## Technologies Used
