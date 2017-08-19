@@ -23,6 +23,14 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(0, result);
     }
+    [TestMethod]
+    public void Equals_ReturnsTrueForSameName_Stylist()
+    {
+      Stylist firstStylist = new Stylist("Meg", 3, "Gene Juarez");
+      Stylist secondStylist = new Stylist("Meg", 3, "Gene Juarez");
+
+      Assert.AreEqual(firstStylist, secondStylist);
+    }
     //
     // [TestMethod]
     // public void Save_StylistAreSaved_Void()
