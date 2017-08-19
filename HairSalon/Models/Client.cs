@@ -87,6 +87,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static List<Client> GetStylistClients(int searchStylist)
@@ -118,6 +122,10 @@ namespace HairSalon.Models
         stylistClients.Add(clientMatch);
       }
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
       return stylistClients;
     }
 
@@ -147,6 +155,10 @@ namespace HairSalon.Models
         foundClient = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
       }
       conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
       return foundClient;
     }
 
@@ -173,6 +185,10 @@ namespace HairSalon.Models
         allClients.Add(newClient);
       }
       conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
       return allClients;
     }
 
@@ -190,6 +206,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
     }
 
     public static void DeleteAll()
@@ -201,6 +221,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
     }
 
     public void Save()
@@ -238,6 +262,10 @@ namespace HairSalon.Models
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
       conn.Close();
+      if (conn != null)
+      {
+          conn.Dispose();
+      }
     }
   }
 }
