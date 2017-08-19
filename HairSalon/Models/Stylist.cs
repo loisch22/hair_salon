@@ -82,6 +82,10 @@ namespace HairSalon.Models
         foundStylist = new Stylist (stylistName, experience, education, id);
       }
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
       return foundStylist;
     }
 
@@ -99,6 +103,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static List<Stylist> GetAllStylists()
@@ -144,6 +152,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static void DeleteAll()
@@ -156,6 +168,10 @@ namespace HairSalon.Models
 
       cmd.ExecuteNonQuery();
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public void Save()
@@ -183,6 +199,10 @@ namespace HairSalon.Models
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
   }
 }
