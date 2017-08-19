@@ -51,6 +51,7 @@ namespace HairSalon.Controllers
     {
       return View();
     }
+
     [HttpGet("/add/client/{id}")]
     public ActionResult AddClient(int id)
     {
@@ -76,6 +77,14 @@ namespace HairSalon.Controllers
       return View(allStylistClients);
     }
 
+    [HttpGet("/stylist/{id}/info/client")]
+    public ActionResult ViewClientList(int id)
+    {
+      List<Client> clientList = Client.GetStylistClients(id);
+
+      return View();
+    }
+
     [HttpGet("/client/details/{id}")]
     public ActionResult ClientDetail(int id)
     {
@@ -83,5 +92,42 @@ namespace HairSalon.Controllers
       return View(clientDetails);
     }
 
+    [HttpGet("/view/all/clients/{id}")]
+    public ActionResult ViewClientsForStylist(int id)
+    {
+      List<Client> clientList = Client.GetStylistClients(id);
+
+      return View(clientList);
+    }
+
+    [HttpGet("/delete/all/clients")]
+    public ActionResult DeleteAllClients()
+    {
+      Client.DeleteAll();
+
+      List<Client> newList = Client.GetAllClients();
+
+      return View("StylistList", newList);
+    }
+
+    [HttpGet("/delete/all/stylists")]
+    public ActionResult DeleteAllCStylists()
+    {
+      Stylist.DeleteAll();
+
+      List<Stylist> newList = Stylist.GetAllStylists();
+
+      return View("StylistList", newList);
+    }
+
+    [HttpGet("/delete/client/{id}")]
+    public ActionResult DeleteClient(int id)
+    {
+      Client.DeleteClient(id);
+
+      List<Client> newList = Client.GetAllClients();
+
+      return View("StylistList", newList);
+    }
   }
 }

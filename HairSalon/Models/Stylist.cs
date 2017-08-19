@@ -144,6 +144,7 @@ namespace HairSalon.Models
 
     public static void DeleteAll()
     {
+      Client.DeleteAll();
       MySqlConnection conn = DB.Connection() as MySqlConnection;
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
