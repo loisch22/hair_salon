@@ -45,16 +45,30 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void GetAll_ReturnAllStylistAdded_AllStylistList()
+    public void Save_DatabaseAssignsIdToStylist_Id()
     {
       Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
       newStylist.Save();
-    
-      List<Stylist> expected = new List<Stylist> {newStylist};
-      List<Stylist> actual = Stylist.GetAllStylists();
 
-      CollectionAssert.AreEqual(expected, actual);
+      Stylist savedStylist = Stylist.GetAllStylists()[0];
+
+      int expected = savedStylist.GetId();
+      int actual = newStylist.GetId();
+
+      Assert.AreEqual(expected, actual);
     }
+
+    // [TestMethod]
+    // public void GetAll_ReturnAllStylistAdded_AllStylistList()
+    // {
+    //   Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
+    //   newStylist.Save();
+    //
+    //   List<Stylist> expected = new List<Stylist> {newStylist};
+    //   List<Stylist> actual = Stylist.GetAllStylists();
+    //
+    //   CollectionAssert.AreEqual(expected, actual);
+    // }
     //
     // [TestMethod]
     // public void FindStylistInfo_ReturnsStylistDetails_ClientList()
