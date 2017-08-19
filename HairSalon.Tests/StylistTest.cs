@@ -31,30 +31,30 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(firstStylist, secondStylist);
     }
-    //
-    // [TestMethod]
-    // public void Save_StylistAreSaved_Void()
-    // {
-    //   Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
-    //   newStylist.Save();
-    //
-    //   int expected = 1;
-    //   int actual = Stylist.GetAllStylists().Count;
-    //
-    //   Assert.AreEqual(expected, actual);
-    // }
-    //
-    // [TestMethod]
-    // public void GetAll_ReturnAllStylistAdded_AllClientsList()
-    // {
-    //   Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
-    //   newStylist.Save();
-    //
-    //   List<Stylist> expected = new List<Stylist> {newStylist};
-    //   List<Stylist> actual = Stylist.GetAllStylists();
-    //
-    //   CollectionAssert.AreEqual(expected, actual);
-    // }
+
+    [TestMethod]
+    public void Save_StylistAreSaved_Void()
+    {
+      Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
+      newStylist.Save();
+
+      int expected = 1;
+      int actual = Stylist.GetAllStylists().Count;
+
+      Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnAllStylistAdded_AllStylistList()
+    {
+      Stylist newStylist = new Stylist("Meg", 3, "Gene Juarez");
+      newStylist.Save();
+    
+      List<Stylist> expected = new List<Stylist> {newStylist};
+      List<Stylist> actual = Stylist.GetAllStylists();
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
     //
     // [TestMethod]
     // public void FindStylistInfo_ReturnsStylistDetails_ClientList()
