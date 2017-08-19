@@ -123,6 +123,10 @@ namespace HairSalon.Models
         // cmd.ExecuteQuery();
       }
       conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
       return allStylists;
     }
 
