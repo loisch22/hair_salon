@@ -27,15 +27,15 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Equals_ReturnsTrueForSameName_Clients()
     {
-      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
-      Client newClient2 = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient = new Client("Cindy", "wavy", "female", 1, "1111111111");
+      Client newClient2 = new Client("Cindy", "wavy", "female", 1, "1111111111");
 
       Assert.AreEqual(newClient, newClient2);
     }
     [TestMethod]
     public void Save_SavesNewClientInfo_Void()
     {
-      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient = new Client("Cindy", "wavy", "female", 1, "1111111111");
       newClient.Save();
 
       int expected = 1;
@@ -46,7 +46,7 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Save_DatabaseAssignsIdToClients_Id()
     {
-      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient = new Client("Cindy", "wavy", "female", 1, "1111111111");
       newClient.Save();
 
       Client savedClient = Client.GetAllClients()[0];
@@ -57,7 +57,7 @@ namespace HairSalon.Tests
     [TestMethod]
     public void GetAllClients_ReturnsAllClients_ClientList()
     {
-      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient = new Client("Cindy", "wavy", "female", 1, "1111111111");
       newClient.Save();
 
       int expected = 1;
@@ -132,7 +132,7 @@ namespace HairSalon.Tests
 
       newClient.UpdateClient(newName);
 
-      Client expected = new Client("CiCi", "wavy", "female", 1, 1111111111);;
+      Client expected = new Client("CiCi", "wavy", "female", 1, "1111111111");;
       Client actual = Client.GetAllClients()[0];
 
       Assert.AreEqual(expected, actual);

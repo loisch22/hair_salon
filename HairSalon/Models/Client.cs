@@ -11,9 +11,9 @@ namespace HairSalon.Models
     private string _hairType;
     private string _gender;
     private int _stylistId;
-    private int _phoneNumber;
+    private string _phoneNumber;
 
-    public Client(string clientName, string hairType, string gender, int stylistId, int phoneNumber, int id = 0)
+    public Client(string clientName, string hairType, string gender, int stylistId, string phoneNumber, int id = 0)
     {
       _id = id;
       _clientName = clientName;
@@ -48,7 +48,7 @@ namespace HairSalon.Models
       return _stylistId;
     }
 
-    public int GetPhoneNumber()
+    public string GetPhoneNumber()
     {
       return _phoneNumber;
     }
@@ -64,6 +64,7 @@ namespace HairSalon.Models
          Client newClient = (Client) otherClient;
          bool idEquality = (this.GetId() == newClient.GetId());
          bool nameEquality = (this.GetClientName() == newClient.GetClientName());
+         bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
          return (idEquality && nameEquality);
        }
      }
@@ -116,7 +117,7 @@ namespace HairSalon.Models
         string hairType = rdr.GetString(2);
         string gender = rdr.GetString(3);
         int stylistId = rdr.GetInt32(4);
-        int phoneNumber = rdr.GetInt32(5);
+        string phoneNumber = rdr.GetString(5);
 
         Client clientMatch = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
         stylistClients.Add(clientMatch);
@@ -142,7 +143,7 @@ namespace HairSalon.Models
       cmd.Parameters.Add(clientIdParameter);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
-      Client foundClient = new Client("", "", "", 0, 0);
+      Client foundClient = new Client("", "", "", 0, "");
 
       while(rdr.Read())
       {
@@ -151,7 +152,7 @@ namespace HairSalon.Models
         string hairType = rdr.GetString(2);
         string gender = rdr.GetString(3);
         int stylistId = rdr.GetInt32(4);
-        int phoneNumber = rdr.GetInt32(5);
+        string phoneNumber = rdr.GetString(5);
         foundClient = new Client(clientName, hairType, gender, stylistId, phoneNumber, id);
       }
       conn.Close();
@@ -180,7 +181,7 @@ namespace HairSalon.Models
         string hairType = rdr.GetString(2);
         string gender = rdr.GetString(3);
         int stylistId = rdr.GetInt32(4);
-        int phoneNumber = rdr.GetInt32(5);
+        string phoneNumber = rdr.GetString(5);
         Client newClient = new Client(clientName, hairType, gender, stylistId, phoneNumber);
         allClients.Add(newClient);
       }

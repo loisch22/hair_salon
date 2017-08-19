@@ -60,7 +60,7 @@ namespace HairSalon.Controllers
       string clientName = Request.Form["clientName"];
       string hairType = Request.Form["hairType"];
       string gender = Request.Form["gender"];
-      int phoneNumber = int.Parse(Request.Form["phoneNumber"]);
+      string phoneNumber = Request.Form["phoneNumber"];
 
       Client newClient = new Client(clientName, hairType, gender, id, phoneNumber);
       newClient.Save();
