@@ -43,7 +43,7 @@ html {
   border: solid 2px;
   color: #e3e3e3;
 }
-.start:hover, .view-all:hover, .finish:hover {
+.start:hover, .view-all:hover, .finish:hover, .view-clients:hover {
   background: #0d0d0d;
   border-color: #0d0d0d;
   color: #e3e3e3;
@@ -87,7 +87,7 @@ html {
   font-family: 'IM Fell Great Primer', serif;
   font-size: 50px;
   letter-spacing: 20px;
-  margin: 5% 20% 6% 20%;
+  margin: 5% 20% 3% 20%;
   padding: 15px 2% 15px 2%;
   color: #ffffff;
   background-color: #1e1e1e;
@@ -106,7 +106,22 @@ html {
   font-family: 'Open Sans', sans-serif;
   font-size: 17px;
 }
-label, .stylist {
+.form-client , .update-form {
+  opacity: .6;
+  background-color: #1e1e1e;
+  border-color: #1e1e1e;
+  border-radius: 0;
+  margin: 10px 50% 20px 0;
+  padding: 40px 60px 70px 60px;
+  color: #ffffff;
+  letter-spacing: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 17px;
+}
+.update-form {
+  padding-bottom: 10%;
+}
+label, .stylist, .client {
   margin-bottom: 20px;
   border-radius: 0;
 }
@@ -118,13 +133,13 @@ label, .stylist {
 }
 .add-button {
   background-color: #3c6094;
-  border-color: 	#3c6094;
+  border-color: #3c6094;
 }
-.add-button:hover, .add-stylist-list:hover {
+.add-button:hover, .add-stylist-list:hover, .add-client:hover, .update:hover {
   background-color: #000033;
   border-color: #000033;
 }
-.cancel:hover {
+.cancel:hover, .exit:hover, .add-client-cancel:hover, .delete:hover {
   background-color: #602525;
   border-color: #602525;
   color: #ffffff;
@@ -144,22 +159,35 @@ label, .stylist {
   color: #ffffff;
   background-color: #1e1e1e;
   opacity: .7;
+
 }
-.new-stylist, .stylist-list {
+.new-stylist, .stylist-list, .client-list, .new-client {
   opacity: .7;
   margin: 5%;
 }
-.stylist, .stylist-list {
+.stylist, .stylist-list, .client, .client-list {
   font-size: 20px;
   color: #000000;
   letter-spacing: 5px;
   text-align: center;
 }
-.view-all, .finish, .add-stylist-list, .delete {
+.view-all, .finish, .add-stylist-list, .delete, .update{
   float: right;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-left: 2%;
   margin-bottom: 5%;
+  letter-spacing: 4px;
+  font-size: 18px;
+  padding: 10px 20px 10px 20px;
+  opacity: .9;
+  background-color: #c7bebe;
+  border: solid #c7bebe 2px;
+  border-radius: 1;
+  color: #000000;
+}
+.view-clients, .add-client, .exit, .add-client-cancel {
+  float: right;
+  margin: 1% 5% 2% 2%;
   letter-spacing: 4px;
   font-size: 18px;
   padding: 10px 20px 10px 20px;
@@ -175,15 +203,45 @@ label, .stylist {
   background-position: center;
   background-size: cover;
 }
-.stylist-name, .stylist-name:visited {
+.stylist-name, .stylist-name:visited, .client-name, .client-name:visited {
   list-style: none;
   color: #000000;
   font-size: 25px;
 }
-.stylist-name:hover, .stylist-name:active {
+.stylist-name:hover, .stylist-name:active, .client-name:hover, .client-name:active {
   list-style: none;
   color: #000000;
   font-size: 25px;
   text-decoration: none;
   color: 	#3c6094;
+}
+#stylist-info {
+  background-image: url("/img/hair-tools.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#client-form {
+  background-image: url("/img/man.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#client-list {
+  background-image: url("/img/hair3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#client-details {
+  background-image: url("/img/blackhair.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#update-client {
+  background-image: url("/img/scissors.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

@@ -2,10 +2,15 @@
   Layout = "_Layout";
 }
 
-<h1 class="header">Update @Model.GetClientName()</h1>
+<body id="update-client">
+  <h1 class="header">Update @Model.GetClientName()</h1>
 
-<form action="/update/client/@Model.GetId()" method="post" class="form-group">
-  <label for="newName">Update Name:</label>
-  <input type="text" name="newName" class="form-control">
-  <button type="submit" class="btn btn-success">Update Name</button>
-</form>
+  <div class="well update-form">
+    <form action="/update/client/@Model.GetId()" method="post" class="form-group">
+      <label for="newName">Update Name:</label>
+      <input type="text" name="newName" class="form-control client">
+      <button type="submit" class="btn btn-success update">Update Name</button>
+    </form>
+  </div>
+
+</body>

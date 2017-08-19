@@ -2,16 +2,19 @@
   Layout = "_Layout";
 }
 
-<h1 class="header">Client List</h1>
+<body id="client-list">
 
-<div class="well stylistClients">
-  <ul>
-    @foreach (var client in Model)
-    {
-      <a href="/client/details/@client.GetId()">@client.GetClientName()</a>
-    }
-  </ul>
-</div>
+  <h1 class="header">Client List</h1>
 
-<a href="/delete/all/clients"><button type="button" class="btn btn-danger">Delete All</button></a>
-<a href="/"><button type="button" class="btn btn-default start">Exit</button></a>
+  <div class="container">
+    <div class="well client-list">
+      <ul>
+        @foreach (var client in Model)
+        {
+          <a class="client-name" href="/client/details/@client.GetId()"><li>@client.GetClientName()</li></a>
+        }
+      </ul>
+      <a href="/delete/all/clients"><button type="button" class="btn btn-danger delete">Delete All</button></a>
+      <a href="/"><button type="button" class="btn btn-default finish">Exit</button></a>
+    </div>
+  </div>

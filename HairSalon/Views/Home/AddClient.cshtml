@@ -2,18 +2,22 @@
   Layout = "_Layout";
 }
 
-<h1 class="header">New Client</h1>
+<body id="client-form">
+  <h1 class="header">New Client</h1>
 
-<form action="/stylist/@Model.GetId()/info/client" method="post" class="form-group">
-  <label for="clientName">Client Name:</label>
-  <input type="text" name="clientName" class="form-control">
-  <label for="hairType">Hair Type:</label>
-  <input type="text" name="hairType" class="form-control">
-  <label for="gender">Gender:</label>
-  <input type="text" name="gender" class="form-control">
-  <label for="phoneNumber">Phone Number:</label>
-  <input type="int" name="phoneNumber" class="form-control">
-  <button type="submit" class="btn btn-success">Add Client</button>
-</form>
+    <div class="well form-client">
+      <form action="/stylist/@Model.GetId()/info/client" method="post" class="form-group">
+        <label for="clientName">Client Name:</label>
+        <input type="text" name="clientName" class="form-control client">
+        <label for="hairType">Hair Type:</label>
+        <input type="text" name="hairType" class="form-control client">
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender" class="form-control client">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="int" name="phoneNumber" class="form-control client">
+        <button type="submit" class="btn btn-success add-client">Add Client</button>
+        <a href="/"><button type="button" class="btn btn-default add-client-cancel">Cancel</button></a>
+      </form>
+    </div>
 
-<a href="/"><button type="button" class="btn btn-default start">Cancel</button></a>
+</body>

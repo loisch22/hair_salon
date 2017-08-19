@@ -2,27 +2,29 @@
   Layout = "_Layout";
 }
 
-<h1 class="header">@Model.GetClientName() Details</h1>
-
-<div class="well newStylist">
-  <p><strong>Name:</strong>
-    <br>
-    @Model.GetClientName()
-  </p>
-  <p><strong>Gender:</strong>
-    <br>
-    @Model.GetGender()
-  </p>
-  <p><strong>Hair Type:</strong>
-    <br>
-    @Model.GetHairType()
-  </p>
-  <p><strong>Phone Number:</strong>
-    <br>
-    @Model.GetPhoneNumber()
-  </p>
-</div>
-
-<a href="/update/client/@Model.GetId()"><button type="button" class="btn btn-warning">Update Client Name</button></a>
-<a href="/delete/client/@Model.GetId()"><button type="button" class="btn btn-danger">Delete @Model.GetClientName()</button></a>
-<a href="/"><button type="button" class="btn btn-success">Exit</button></a>
+<body id="client-details">
+  <h1 class="header">@Model.GetClientName()</h1>
+  <div class="container">
+    <div class="well new-client">
+      <p class="client"><strong>Client Name:</strong>
+        <br>
+        @Model.GetClientName()
+      </p>
+      <p class="client"><strong>Gender:</strong>
+        <br>
+        @Model.GetGender()
+      </p>
+      <p class="client"><strong>Hair Type:</strong>
+        <br>
+        @Model.GetHairType()
+      </p>
+      <p class="client"><strong>Phone Number:</strong>
+        <br>
+        @Model.GetPhoneNumber()
+      </p>
+      <a href="/update/client/@Model.GetId()"><button type="button" class="btn btn-warning update">Update Client Name</button></a>
+      <a href="/delete/client/@Model.GetId()"><button type="button" class="btn btn-danger delete">Delete @Model.GetClientName()</button></a>
+      <a href="/"><button type="button" class="btn btn-success finish">Exit</button></a>
+    </div>
+  </div>
+</body>
