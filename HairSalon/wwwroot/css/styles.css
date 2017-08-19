@@ -1,18 +1,51 @@
 #index {
-  background-image: url("/img/hair1.jpg");
+  background-image: url("/img/hair2.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   width: 100vw;
   height: 100%;
 }
-#footer {
-  margin-top: 50%;
+/*#footer {
+  margin-top: 40%;
   text-align: right;
-  padding-right: 5px;
+  padding-right: 15px;
+}*/
+.move-right {
+  margin-left: 55%;
 }
-.moveRight {
-  margin-left: 60%;
+#salon {
+  font-size: 55px;
+  margin-top: 30%;
+  margin-bottom: 5%;
+  margin-right: 27px;
+  padding-bottom: 20px;
+  font-family: 'IM Fell Great Primer', serif;
+  color: #ffffff;
+  letter-spacing: 11px;
+  border-bottom: solid 2px;
 }
-#greeting{
-  font-size: 40px;
+.greeting-top, .greeting-bottom {
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 5px;
+}
+.greeting-bottom {
+  font-size: 50px;
+  margin-top: 13%;
+  letter-spacing: 9px;
+}
+.start {
+  margin-top: 5%;
+  margin-left: 33%;
+  padding: 2% 12% 2% 12%;
+  font-size: 20px;
+  letter-spacing: 5px;
+  background: transparent;
+  border: solid 3px;
+  color: #ffffff;
+}
+.start:hover {
+  background: #000000;
+  color: #ffffff;
 }

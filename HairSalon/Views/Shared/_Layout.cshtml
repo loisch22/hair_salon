@@ -9,7 +9,7 @@
     crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400i" rel="stylesheet">  </head>
   <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -21,12 +21,10 @@
       </div>
     </nav>
 
-    <div class="container">
+    <article>
+      @RenderBody()
+    </article>
 
-      <article>
-        @RenderBody()
-      </article>
-    </div>
 
     <footer id="footer">
       @Html.Partial("_Footer")
