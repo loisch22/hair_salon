@@ -24,6 +24,14 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(0, result);
     }
+    [TestMethod]
+    public void Equals_ReturnsTrueForSameName_Clients()
+    {
+      Client newClient = new Client("Cindy", "wavy", "female", 1, 1111111111);
+      Client newClient2 = new Client("Cindy", "wavy", "female", 1, 1111111111);
+
+      Assert.AreEqual(newClient, newClient2);
+    }
     // [TestMethod]
     // public void Save_SavesNewClientInfo_Void()
     // {
