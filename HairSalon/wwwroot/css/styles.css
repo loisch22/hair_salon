@@ -11,7 +11,7 @@
   padding-right: 15px;
 }
 .move-right {
-  margin-left: 55%;
+  margin-left: 50%;
 }
 #salon {
   font-size: 55px;
@@ -31,7 +31,7 @@
   letter-spacing: 5px;
 }
 .greeting-bottom {
-  font-size: 50px;
+  font-size: 60px;
   margin-top: 13%;
   letter-spacing: 9px;
 }
@@ -65,6 +65,17 @@
   text-decoration: none;
 }
 .all-stylist, .add-stylist {
-  margin-left: 15em;
-  letter-spacing: 3px;
+  margin-left: 5em;
+  letter-spacing: 5px;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  color: #e3e3e3;
+}
+.all-stylist:hover, .add-stylist:hover {
+  font-style: italic;
+  background-color: transparent;
+  border: none;
+  letter-spacing: 5px;
+  color: #ffffff;
 }
