@@ -46,12 +46,6 @@ namespace HairSalon.Controllers
       return View(stylistInfo);
     }
 
-    [HttpGet("/add/client")]
-    public ActionResult AddClient()
-    {
-      return View();
-    }
-
     [HttpGet("/add/client/{id}")]
     public ActionResult AddClient(int id)
     {
