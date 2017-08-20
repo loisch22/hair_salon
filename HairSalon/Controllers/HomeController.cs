@@ -113,7 +113,13 @@ namespace HairSalon.Controllers
 
       List<Client> newList = Client.GetAllClients();
 
-      return View("StylistList", newList);
+      return View("DeleteComplete", newList);
+    }
+
+    [HttpGet("/delete/complete")]
+    public ActionResult DeleteComplete()
+    {
+      return View();
     }
 
     [HttpGet("/delete/all/stylists")]
@@ -123,7 +129,7 @@ namespace HairSalon.Controllers
 
       List<Stylist> newList = Stylist.GetAllStylists();
 
-      return View("StylistList", newList);
+      return View("DeleteComplete", newList);
     }
 
     [HttpGet("/delete/{id}/client")]

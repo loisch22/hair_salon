@@ -245,3 +245,9 @@ label, .stylist, .client {
   background-position: center;
   background-size: cover;
 }
+#delete-all {
+  background-image: url("/img/hairtools.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
