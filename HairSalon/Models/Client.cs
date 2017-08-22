@@ -65,7 +65,7 @@ namespace HairSalon.Models
          bool idEquality = (this.GetId() == newClient.GetId());
          bool nameEquality = (this.GetClientName() == newClient.GetClientName());
          bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
-         return (idEquality && nameEquality);
+         return (idEquality && nameEquality && stylistEquality);
        }
      }
 
